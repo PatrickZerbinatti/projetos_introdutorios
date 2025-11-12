@@ -32,13 +32,13 @@ Entao busco as pessoas com cargo
     Go To    https://www.linkedin.com/search/results/people/?keywords=${cargo}&origin=SWITCH_SEARCH_VERTICAL&sid=Jyo
 
 E me conecto com todas
-    ${promise}=    Promise To    Wait For Elements State
+    ${promise_limite}=    Promise To    Wait For Elements State
     ...    //h2[text()="Você alcançou o limite semanal de convites"]
     ...    state=visible
     ...    timeout=1s
-    FOR    ${pagina}    IN RANGE    ${10}
+    FOR    ${pagina}    IN RANGE    ${50}
         ${limite_conexoes}    Run Keyword And Return Status
-        ...    Wait For    ${promise}    timeout=1s
+        ...    Wait For    ${promise_limite}    timeout=1s
         
         IF    ${limite_conexoes}
             Log    Limite conexoes alcançado - Finalizado Processo com Sucesso
@@ -55,7 +55,7 @@ Conectar com todos da pagina
     ${qtd_botoes}    Get Length    ${botoes_conectar}
     WHILE    ${qtd_botoes} != 0
         Clicar em conectar    ${botoes_conectar}[0]
-        Clicar em enviar nota
+        #Clicar em enviar nota
         Wait For Load State    load
         @{botoes_conectar}    Get Elements    ${btnConectar}
         ${qtd_botoes}    Get Length    ${botoes_conectar}    
@@ -76,14 +76,4 @@ Clicar em enviar nota
 
 Clicar em conectar
     [Arguments]    ${botao_conectar}
-    TRY
-        Click    ${botao_conectar}
-    EXCEPT
-        ${botao_retirar_encontrado}    Get Elements    ${botaoEntendi}
-        ${qtd_botoes_encontrados}    Get Length    ${botao_retirar_encontrado}
-        IF    ${qtd_botoes_encontrados} > 0
-            Click    ${botaoCancelar}
-        ELSE
-            Reload
-        END
-    END
+    Click    ${botao_conectar}

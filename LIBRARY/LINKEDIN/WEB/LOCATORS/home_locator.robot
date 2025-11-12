@@ -3,11 +3,11 @@ ${inputEmail}    id=username
 ${inputSenha}    id=password
 ${btnLogar}    //button[@type="submit"]
 
-${btnAvancar}    //button/span[text()="Avançar"]
-${btnConectar}    //button/span[text()="Conectar"]
-${btnEnviarSemNota}    //button/span[text()="Enviar sem nota"]
-${botaoRetirar}    //button/span[text()="Retirar"]
-${botaoCancelar}    //button/span[text()="Cancelar"]
-${botaoEntendi}    //button/span[text()="Entendi"]
+${btnAvancar}    //span[text()="Próxima"]
+${btnConectar}    //span[text()="Conectar"]
+${btnEnviarSemNota}    //span[text()="Enviar sem nota"]
+${botaoRetirar}    //span[text()="Retirar"]
+${botaoCancelar}    //*[@role="alertdialog"]//span[text()="Cancelar"]
+${botaoEntendi}    //span[text()="Entendi"]
 
 ${mensagemLimite}    //h2[text()="Você alcançou o limite semanal de convites"]
